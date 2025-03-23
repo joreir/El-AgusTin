@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
+import dotenv
+
+dotenv.load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'users',
+    'matches',
 ]
 
 MIDDLEWARE = [
@@ -95,6 +100,10 @@ MONGODB_COLLECTIONS = {
     'matches': 'matches',
     'bets': 'bets',
 }
+
+# API Football settings
+API_FOOTBALL_KEY = os.getenv('API_FOOTBALL_KEY', 'your-api-key-here')
+API_FOOTBALL_HOST = os.getenv('API_FOOTBALL_HOST', 'v3.football.api-sports.io')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
